@@ -18,6 +18,8 @@ defmodule Kwote do
   """
   use HTTPoison.Base
 
+  def sourceURL, do: "http://quotesondesign.com/wp-json/posts"
+
   def main(args) do
     args |> parse_args |> process |> ok |> parse_result
   end
@@ -27,14 +29,14 @@ defmodule Kwote do
   def process([]) do
     IO.puts "No arguments given"
 
-    get!("http://quotesondesign.com/wp-json/posts")
+    get!(sourceURL)
     |> Map.get(:body)
     |> Poison.decode
   end
 
   def process(options) do
     IO.puts options[:type]
-    get!("http://quotesondesign.com/wp-json/posts?filter[orderby]=rand")
+    get!("#{sourceURL}?filter[orderby]=rand")
     |> Map.get(:body)
     |> Poison.decode
   end
