@@ -2,6 +2,8 @@
 
 **A simple CLI app for returning a Quote from** [Quotes on Design](http://quotesondesign.com)
 
+Elixir v1.4.1
+
 ## Examples
 ```sh
 # Return a random quote
